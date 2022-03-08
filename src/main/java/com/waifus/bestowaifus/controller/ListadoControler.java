@@ -18,7 +18,6 @@ public class ListadoControler {
    public String listarWaifus(Model model){
       List<Waifu> nuevaWaifu = waifuService.buscarWaifus();
       model.addAttribute("Waifus", nuevaWaifu);
-      nuevaWaifu.forEach(System.out::println);
       return "listado";
    }
 

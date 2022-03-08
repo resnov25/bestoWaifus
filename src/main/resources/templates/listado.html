@@ -23,21 +23,6 @@
 
 <div class="container mt-4 vjs-style">
     <div class="row">
-        <div class="col-md-3 mb-4">
-            <div class="card" style="width: 18rem;">
-                <img src="https://www.korosenai.es/wp-content/uploads/2021/03/hu-tao-genshin-impact.jpg"
-                     class="card-img-top " alt="200">
-                <div class="card-body">
-                    <h5 class="card-title">Hu Tao</h5>
-                    <p class="card-text">Hu Tao (chino: 胡桃 Hú Táo, "Walnut") es un personaje jugable en Genshin Impact.
-                        Ella es la 77.ᵃ directora de la Funeraria El Camino. Llegó por primera vez en la Versión 1.3 en
-                        el gachapón "Florecimiento fugaz".</p>
-                    <p class="card-text">Waifumetro: 92</p>
-                    <a href="#" class="btn btn-primary">Conoce mas</a>
-                </div>
-            </div>
-        </div>
-
         <div th:each="Waifu : ${Waifus}" class="col-md-3 mb-4">
             <div class="card" style="width: 18rem;">
                 <img th:src="${Waifu.imagenUrl}"
@@ -45,55 +30,6 @@
                 <div class="card-body">
                     <h5 th:text="${Waifu.nombre}" class="card-title"></h5>
                     <p th:text="${Waifu.descripcion}" class="card-text"></p>
-                    <p th:text="${Waifu.puntacion}" class="card-text">Puntuacion: </p>
-                    <a href="#" class="btn btn-primary">Conoce mas</a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="https://www.geekmi.news/__export/1618085297645/sites/debate/img/2021/04/10/eris2_crop1618085209189.jpg_225304615.jpg"
-                     class="card-img-top" alt="200" >
-                <div class="card-body">
-                    <h5 class="card-title">Eris Greyrat</h5>
-                    <p class="card-text">Eris Boreas Greyrat (エリス・ボレアス・グレイラット Erisu Boreasu Gureiratto) es una chica
-                        noble y prima segunda de Rudeus. Es un personaje tsundere con poco temperamento, pero tiene
-                        potencial en el estilo Sword-God. Durante su viaje de regreso a casa tras el incidente del
-                        teletransporte, llega a amar a Rudeus.</p>
-                    <p class="card-text">Waifumetro: 91</p>
-                    <a href="#" class="btn btn-primary">Conoce mas</a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="https://somoskudasai.com/wp-content/uploads/2021/11/Visual-16.jpg" class="card-img-top"
-                     alt="200">
-                <div class="card-body">
-                    <h5 class="card-title">Power</h5>
-                    <p class="card-text">Power (パワー, Pawā) es una Mujer Demonio Sangre (血ちの魔ま人,じん Chi no majin) y una
-                        Cazadora de Demonios de Seguridad Pública, que forma parte del escuadrón especial de Makima.</p>
-                    <p class="card-text">Waifumetro: 94</p>
-                    <a href="#" class="btn btn-primary">Conoce mas</a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="http://pm1.narvii.com/7679/9b038e9a38317811b6ddfbcc69729b00f58a50cer1-699-1024v2_uhq.jpg"
-                     class="card-img-top" alt="200">
-                <div class="card-body">
-                    <h5 class="card-title">Esdeath</h5>
-                    <p class="card-text">Esdeath (エスデス, Esdesu) era una general de alto rango del Imperio, y la líder de
-                        los Jaegers
-                        antes de su disolución.</p>
-                    <p class="card-text">Waifumetro: 95</p>
                     <a href="#" class="btn btn-primary">Conoce mas</a>
                 </div>
             </div>
