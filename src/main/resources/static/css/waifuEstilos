@@ -1,0 +1,7 @@
+.vj-style .card{
+    height: 100%;
+}
+.vj-style .car img{
+    height: 200px;
+    object-fit: cover;
+}

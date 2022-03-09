@@ -1,6 +1,6 @@
 drop table if exists waifu;
 
-create table waifu )
+create table waifu (
     id int primary key auto_increment,
     nombre varchar(200) not null,
     descripcion varchar (3000),
@@ -9,14 +9,44 @@ create table waifu )
 
 
 insert into waifu
-(nombre, descripcion, imagen_url) values
-('Junko konno', ' Junko Konno (紺野 純子, Konno Junko) fue una idol de los años 80s cuya popularidad provocó el boom de las idol de dicha década y murió en un accidente aéreo en el año 1983.', 'https://i.pinimg.com/originals/48/14/41/481441c5672a70a2d987fe03a3ca02f4.jpg'),
-('Nobara Kugisaki','Nobara Kugisaki (釘崎野薔薇, Kugisaki Nobara) es una de las protagonistas de la serie manga Jujutsu Kaisen.','https://i.pinimg.com/originals/ba/5a/70/ba5a7064b4b1f9b260df25901008e21c.jpg'),
-('Miko Iino','Miko Iino es uno de los personajes principales del anime y manga Kaguya-sama wa Kokurasetai.','https://i.pinimg.com/originals/86/70/b7/8670b7eb6d03472464ab4e5cc5466eab.jpg');
-('Mona Megistus','Mona es un personaje de Genshin Impact muy variable en cuanto a rol, pudiendo efectuar daño, pero usado generalmente como apoyo para el equipo','https://i.pinimg.com/originals/5e/b4/d3/5eb4d361a14a7209efdbe4907858c001.jpg')
-('Power','Power (パワー,, Pawā) es una Mujer Demonio Sangre ( 血 ち の 魔 ま 人, じん , Chi no majin) y una Cazadora de Demonios de Seguridad Pública','https://somoskudasai.com/wp-content/uploads/2021/11/Visual-16.jpg')
-('Esdeath','Esdeath (エスデス, Esdesu) era una general de alto rango del Imperio, y la líder de los Jaegers antes de su disolución.','https://i.pinimg.com/originals/fe/3e/8a/fe3e8af00dc578e4e2667a9679254e4f.jpg')
-('Nino Nakano','Nino Nakano ( 中 ( なか ) 野 ( の ) 二 ( に ) 乃 ( の ) , , Nakano Nino) es la segunda hermana de las quintillizas Nakano.','https://i.pinimg.com/originals/5c/dd/df/5cdddfde3398f513a59c07cc298247c2.jpg')
+(id, nombre, descripcion, imagen_url) values
+(1, 'Junko konno', ' Junko Konno (紺野 純子, Konno Junko) fue una idol de los años 80s cuya popularidad provocó el boom de las idol de dicha década y murió en un accidente aéreo en el año 1983.', 'https://i.pinimg.com/originals/48/14/41/481441c5672a70a2d987fe03a3ca02f4.jpg'),
+(2, 'Nobara Kugisaki','Nobara Kugisaki (釘崎野薔薇, Kugisaki Nobara) es una de las protagonistas de la serie manga Jujutsu Kaisen.','https://i.pinimg.com/originals/ba/5a/70/ba5a7064b4b1f9b260df25901008e21c.jpg'),
+(3, 'Miko Iino','Miko Iino es uno de los personajes principales del anime y manga Kaguya-sama wa Kokurasetai.','https://i.pinimg.com/originals/86/70/b7/8670b7eb6d03472464ab4e5cc5466eab.jpg'),
+(4, 'Mona Megistus','Mona es un personaje de Genshin Impact muy variable en cuanto a rol, pudiendo efectuar daño, pero usado generalmente como apoyo para el equipo','https://i.pinimg.com/originals/5e/b4/d3/5eb4d361a14a7209efdbe4907858c001.jpg'),
+(5, 'Power','Power (パワー,, Pawā) es una Mujer Demonio Sangre ( 血 ち の 魔 ま 人, じん , Chi no majin) y una Cazadora de Demonios de Seguridad Pública','https://somoskudasai.com/wp-content/uploads/2021/11/Visual-16.jpg'),
+(6, 'Esdeath','Esdeath (エスデス, Esdesu) era una general de alto rango del Imperio, y la líder de los Jaegers antes de su disolución.','https://i.pinimg.com/originals/fe/3e/8a/fe3e8af00dc578e4e2667a9679254e4f.jpg'),
+(7, 'Nino Nakano','Nino Nakano ( 中 ( なか ) 野 ( の ) 二 ( に ) 乃 ( の ) , , Nakano Nino) es la segunda hermana de las quintillizas Nakano.','https://i.pinimg.com/originals/5c/dd/df/5cdddfde3398f513a59c07cc298247c2.jpg');
 
-select *
-from waifu;
+drop table if exists estudio;
+
+create table estudio
+(
+    id        int primary key auto_increment,
+    nombre    varchar(200) not null,
+    sitio_web varchar(500)
+);
+
+insert into estudio
+(id, nombre, sitio_web) VALUES
+(1, 'Square Enix','https://square-enix-games.com › es_ES'),
+(2,'Tezuka Productions','https://tezuka.co.jp/'),
+(3,'A-1 Pictures','https://a1p.jp/'),
+(4,'Mappa','https://www.mappa.co.jp/'),
+(5,'Ninguno','No aplica');
+
+alter table waifu
+add column estudio_id int,
+add foreign key (estudio_id) references estudio(id);
+
+update waifu set estudio_id = 1 where id in (6);
+update waifu set estudio_id = 2 where id in (7);
+update waifu set estudio_id = 3 where id in (3);
+update waifu set estudio_id = 4 where id in (1, 2, 5);
+update waifu set estudio_id = 5 where id in (4);
+
+alter table waifu
+modify estudio_id int not null;
+
+
+
