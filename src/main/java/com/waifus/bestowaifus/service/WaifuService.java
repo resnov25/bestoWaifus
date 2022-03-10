@@ -4,6 +4,7 @@ import com.waifus.bestowaifus.domain.Waifu;
 import com.waifus.bestowaifus.repository.WaifusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +20,15 @@ public class WaifuService {
         this.waifusRepository = waifusRepository;
     }
 
-    @Autowired
     public List<Waifu> buscarWaifus() {
         return waifusRepository.buscarTodos();
     }
 
     public List<Waifu>buscarPorEstudio(int estudioId){
-        return waifusRepository.buscarPorEstudio(estudioId);
+        return waifusRepository.findByEstudio_Id(estudioId);
+    }
+
+    public List<Waifu>buscar(String consulta){
+        return waifusRepository.findByNombreContaining(consulta);
     }
 }

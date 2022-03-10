@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:object-fit="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:object-fit="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:height="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,23 +16,23 @@
 <body>
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="Img/logo.png" alt="" width="30" height="30">
+        <a th:href="@{/}" class="navbar-brand" href="#"><img src="Img/logo.png" alt="" width="30" height="30">
             Top Waifus semanales
         </a>
     </div>
 </nav>
 
-<div class="container mt-4 vj-style">
+<div class="container mt-4 vj-style height: 100%">
     <div class="row">
-        <div th:each="Waifu : ${Waifus}" class="col-md-3 mb-4">
+        <div th:each="Waifu : ${Waifus}" class="col-md-3 mb-4 height: 100%">
             <div class="card">
                 <img th:src="${Waifu.imagenUrl}"
                      class="card-img-top " height="200" object-fit:cover>
                 <div class="card-body">
                     <h5 th:text="${Waifu.nombre}" class="card-title"></h5>
-                    <span th:text="${Waifu.estudio.nombre}" class="badge bg-warning text-dark"></span>
+                    <a th:href="@{/waifusPorEstudio(estudioId=${Waifu.estudio.id})}" th:text="${Waifu.estudio.nombre}" class="badge bg-warning text-dark"></a>
                     <span th:text="${Waifu.anime.nombre}" class="badge bg-danger"></span>
-                    <p th:text="${Waifu.descripcion}" class="card-text"></p>
+                    <p th:text="${Waifu.descripcion}" class="card-text" height="100"></p>
                     <a href="#" class="btn btn-primary">Conoce mas</a>
                 </div>
             </div>
