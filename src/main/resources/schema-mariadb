@@ -25,6 +25,7 @@ create table estudio
     id        int primary key auto_increment,
     nombre    varchar(200) not null,
     sitio_web varchar(500)
+
 );
 
 insert into estudio
@@ -45,8 +46,43 @@ update waifu set estudio_id = 3 where id in (3);
 update waifu set estudio_id = 4 where id in (1, 2, 5);
 update waifu set estudio_id = 5 where id in (4);
 
+
+
 alter table waifu
 modify estudio_id int not null;
+
+
+drop table if exists anime;
+create table anime
+(
+    id    int primary key auto_increment,
+    nombre varchar(200)
+
+);
+
+insert into anime
+(id, nombre) VALUES
+(1, 'Zombie Land Saga'),
+(2,'Jujutsu Kaisen'),
+(3,'Akame Ga Kill'),
+(4,'Genshin Impact'),
+(5,'Chainsaw man'),
+(6,'Kaguya Sama'),
+(7,'Las Quintillizas');
+
+
+alter table waifu
+add column anime_id int,
+add foreign key (anime_id) references anime(id);
+
+update waifu set anime_id = 1 where id in (1);
+update waifu set anime_id = 2 where id in (2);
+update waifu set anime_id = 6 where id in (3);
+update waifu set anime_id = 4 where id in (4);
+update waifu set anime_id = 5 where id in (5);
+update waifu set anime_id = 3 where id in (6);
+update waifu set anime_id = 7 where id in (7);
+
 
 
 

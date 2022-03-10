@@ -21,6 +21,10 @@ public class WaifuService {
 
     @Autowired
     public List<Waifu> buscarWaifus() {
-        return waifusRepository.findAll();
+        return waifusRepository.buscarTodos();
+    }
+
+    public List<Waifu>buscarPorEstudio(int estudioId){
+        return waifusRepository.buscarPorEstudio(estudioId);
     }
 }
