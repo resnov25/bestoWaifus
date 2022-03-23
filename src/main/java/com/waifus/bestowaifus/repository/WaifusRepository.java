@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface WaifusRepository extends JpaRepository <Waifu, Integer>{
 
-    @Query("select v from Waifu v order by v.nombre")
-    List<Waifu> buscarTodos();
+    //@Query("select v from Waifu v order by v.nombre")
+    List<Waifu> findAllBy();
 
     //@Query("select v from Waifu v where v.estudio.id = ?1")
     List<Waifu> findByEstudio_Id(int estudioId);
@@ -17,5 +17,7 @@ public interface WaifusRepository extends JpaRepository <Waifu, Integer>{
     //@Query("from Waifu v where v.nombre like %?1%")
 
     List<Waifu> findByNombreContaining(String consulta);
+
+    List<Waifu> findByAnime_Id(int animeId);
 
 }

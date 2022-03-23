@@ -2,11 +2,7 @@ package com.waifus.bestowaifus.service;
 
 import com.waifus.bestowaifus.domain.Waifu;
 import com.waifus.bestowaifus.repository.WaifusRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,7 +17,7 @@ public class WaifuService {
     }
 
     public List<Waifu> buscarWaifus() {
-        return waifusRepository.buscarTodos();
+        return waifusRepository.findAllBy();
     }
 
     public List<Waifu>buscarPorEstudio(int estudioId){
@@ -31,4 +27,14 @@ public class WaifuService {
     public List<Waifu>buscar(String consulta){
         return waifusRepository.findByNombreContaining(consulta);
     }
+
+    public List<Waifu>buscarPorAnime(int animeId){
+        return waifusRepository.findByAnime_Id(animeId);
+    }
+
+
+    public Waifu guardar(Waifu waifu) {
+        return waifusRepository.save(waifu);
+    }
 }
+

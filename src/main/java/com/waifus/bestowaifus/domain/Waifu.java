@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Waifu {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private String descripcion;
@@ -27,5 +27,15 @@ public class Waifu {
     @ManyToOne
     private Anime anime;
 
-
+    @Override
+    public String toString() {
+        return "Waifu{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", imagenUrl='" + imagenUrl + '\'' +
+                ", estudio=" + estudio +
+                ", anime=" + anime +
+                '}';
+    }
 }

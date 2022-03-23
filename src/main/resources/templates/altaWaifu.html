@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:object-fit="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:height="http://www.w3.org/1999/xhtml">
+      xmlns:height="http://www.w3.org/1999/xhtml" xmlns:thvalue="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,7 +16,6 @@
 <body>
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a th:href="@{/waifuAlta}" type="button" class="btn btn-success">Dar de alta a una waifu nueva</a>
         <a th:href="@{/}" class="navbar-brand" href="#"><img src="Img/logo.png" alt="" width="30" height="30">
             Top Waifus
         </a>
@@ -29,27 +28,36 @@
 </nav>
 
 <div class="container mt-4 vj-style height: 100%">
-
     <div class="row">
-        <div class="col col-md-12 text-right mb-4">
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div th:each="Waifu : ${Waifus}" class="col-md-3 mb-4 height: 100%">
-            <div class="card">
-                <img th:src="${Waifu.imagenUrl}"
-                     class="card-img-top " height="200" object-fit:cover>
-                <div class="card-body">
-                    <h5 th:text="${Waifu.nombre}" class="card-title"></h5>
-                    <a th:href="@{/waifusPorEstudio(estudioId=${Waifu.estudio.id})}" th:text="${Waifu.estudio.nombre}"
-                       class="badge bg-warning text-dark"></a>
-                    <a th:href="@{/waifusPorAnime(animeId=${Waifu.anime.id})}" th:text="${Waifu.anime.nombre}" class="badge bg-danger"></a>
-                    <p th:text="${Waifu.descripcion}" class="card-text" height="100"></p>
-                    <a href="#" class="btn btn-primary">Conoce mas</a>
+        <div class="card">
+            <h1>Nueva Waifu</h1>
+            <form method="post" th:action="@{/waifus/guardar}" th:object="${waifu}">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombre}" id="nombre" aria-describedby="emailHelp">
                 </div>
-            </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Descripcion</label>
+                    <input type="text" th:field="*{descripcion}" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="urlImagen" class="form-label">Url de la imagen</label>
+                    <input type="url" class="form-control" th:field="*{imagenUrl}" id="urlImagen" placeholder="Url de la imagen">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="estudio" class="form-label">Estudio de animacion</label>
+                    <select class="form-control" th:field="*{estudio}" id="estudio" aria-label="Default select example">
+                        <option th:each="estudio : ${estudio}" th:value="${estudio.id}" th:text="${estudio.nombre}"></option>>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="anime" class="form-label">Anime</label>
+                    <select class="form-control" th:field="*{anime}" id="anime" aria-label="Default select example">
+                        <option th:each="anime : ${anime}" th:value="${anime.id}" th:text="${anime.nombre}"></option>>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-3">Subir</button>
+            </form>
         </div>
     </div>
 </div>

@@ -9,5 +9,4 @@ public class BestowaifusApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BestowaifusApplication.class, args);
 	}
-
 }

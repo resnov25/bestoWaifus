@@ -24,13 +24,19 @@ public class ListadoControler {
    @RequestMapping("/waifusPorEstudio")
    public String listarWaifusPorEstudio(int estudioId, Model model){
       List<Waifu> waifu =waifuService.buscarPorEstudio(estudioId);
-      model.addAttribute("waifus", waifu);
+      model.addAttribute("Waifus", waifu);
       return "listado";
    }
    @RequestMapping("/buscar")
    public String buscar(@RequestParam("q")String consulta, Model model){
       List<Waifu> waifu = waifuService.buscar(consulta);
-      model.addAttribute("waifus", waifu);
+      model.addAttribute("Waifus", waifu);
+      return "listado";
+   }
+   @RequestMapping("/waifusPorAnime")
+   public String listarWaifusPorAnime(int animeId, Model model){
+      List<Waifu> waifu = waifuService.buscarPorAnime(animeId);
+      model.addAttribute("Waifus", waifu);
       return "listado";
    }
 
